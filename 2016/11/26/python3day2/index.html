@@ -1,0 +1,544 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>python3day2 | Annfs&#39;s  Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Annfs">
+    
+
+    
+    <meta name="description" content="Get a good understanding of the Model-View-Controller (MVC) design pattern
+From The Djangobook
+使用默认版本的 Python1py
+使用 Python 271py -2
+使用 Python 351py -3
+回显:Python 3.5.2 (v3.5.2:4def2a2901a5, Jun 25 2016">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python3day2">
+<meta property="og:url" content="https://annfs.github.io/2016/11/26/python3day2/index.html">
+<meta property="og:site_name" content="Annfs's  Blog">
+<meta property="og:description" content="Get a good understanding of the Model-View-Controller (MVC) design pattern
+From The Djangobook
+使用默认版本的 Python1py
+使用 Python 271py -2
+使用 Python 351py -3
+回显:Python 3.5.2 (v3.5.2:4def2a2901a5, Jun 25 2016">
+<meta property="og:updated_time" content="2016-11-26T16:53:58.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="python3day2">
+<meta name="twitter:description" content="Get a good understanding of the Model-View-Controller (MVC) design pattern
+From The Djangobook
+使用默认版本的 Python1py
+使用 Python 271py -2
+使用 Python 351py -3
+回显:Python 3.5.2 (v3.5.2:4def2a2901a5, Jun 25 2016">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Annfs&#39;s  Blog" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="Annfs&#39;s  Blog" title="Annfs&#39;s  Blog"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Annfs&#39;s  Blog">Annfs&#39;s  Blog</a></h1>
+				<h2 class="blog-motto">Pycoder,Html</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">主页 | Home</a></li>
+					
+						<li><a href="/archives">归档 | Archives</a></li>
+					
+						<li><a href="/about">简介 | About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:annfs.github.io">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/11/26/python3day2/" title="python3day2" itemprop="url">python3day2</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Annfs" target="_blank" itemprop="author">Annfs</a>
+		
+  <p class="article-time">
+    <time datetime="2016-11-26T14:51:35.000Z" itemprop="datePublished"> 发表于 2016-11-26</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#使用默认版本的-Python"><span class="toc-number">1.</span> <span class="toc-text">使用默认版本的 Python</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#使用-Python-27"><span class="toc-number">2.</span> <span class="toc-text">使用 Python 27</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#使用-Python-35"><span class="toc-number">3.</span> <span class="toc-text">使用 Python 35</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#使用-Python-35-安装virtualenv"><span class="toc-number">4.</span> <span class="toc-text">使用 Python 35 安装virtualenv</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#使用-Python-35进入python3控制台"><span class="toc-number">5.</span> <span class="toc-text">使用 Python 35进入python3控制台</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#如果是外网或者局域网电脑上可以用其它电脑查看开发服务器"><span class="toc-number">6.</span> <span class="toc-text">如果是外网或者局域网电脑上可以用其它电脑查看开发服务器</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#访问对应的-ip加端口，比如-http-192-168-10-15-8000"><span class="toc-number">7.</span> <span class="toc-text">访问对应的 ip加端口，比如 http://192.168.10.15:8000</span></a></li></ol>
+		
+		</div>
+		
+		<p>Get a good understanding of the Model-View-Controller (MVC) design pattern</p>
+<p>From The Djangobook</p>
+<h1 id="使用默认版本的-Python"><a href="#使用默认版本的-Python" class="headerlink" title="使用默认版本的 Python"></a>使用默认版本的 Python</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">py</div></pre></td></tr></table></figure>
+<h1 id="使用-Python-27"><a href="#使用-Python-27" class="headerlink" title="使用 Python 27"></a>使用 Python 27</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">py -2</div></pre></td></tr></table></figure>
+<h1 id="使用-Python-35"><a href="#使用-Python-35" class="headerlink" title="使用 Python 35"></a>使用 Python 35</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">py -3</div></pre></td></tr></table></figure>
+<p>回显:<br>Python 3.5.2 (v3.5.2:4def2a2901a5, Jun 25 2016, 22:18:55) [MSC v.1900 64 bit (AMD64)] on win32<br>Type “help”, “copyright”, “credits” or “license” for more information.</p>
+<h1 id="使用-Python-35-安装virtualenv"><a href="#使用-Python-35-安装virtualenv" class="headerlink" title="使用 Python 35 安装virtualenv"></a>使用 Python 35 安装virtualenv</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">py -3 -m pip install virtualenv</div></pre></td></tr></table></figure>
+<p>回显:<br>Collecting virtualenv<br>  Downloading virtualenv-15.1.0-py2.py3-none-any.whl (1.8MB)<br>    100% |████████████████████████████████| 1.8MB 234kB/s<br>Installing collected packages: virtualenv<br>Successfully installed virtualenv-15.1.0</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">F:\&gt;cd python3</div></pre></td></tr></table></figure>
+<p>使用 Python 35 安装django==1.8.13<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">py -3 -m pip install django==1.8.13</div></pre></td></tr></table></figure></p>
+<p>回显:<br>Collecting django-1.8.13<br>  Downloading django-1.8.13.tar.gz (5.7MB)<br>    100% |████████████████████████████████| 6.2MB 102kB/s<br>Installing collected packages: django<br>  Running setup.py install for django … done<br>Successfully installed django-1.8.13</p>
+<h1 id="使用-Python-35进入python3控制台"><a href="#使用-Python-35进入python3控制台" class="headerlink" title="使用 Python 35进入python3控制台"></a>使用 Python 35进入python3控制台</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">py -3</div></pre></td></tr></table></figure>
+<p>回显:<br>Python 3.5.2 (v3.5.2:4def2a2901a5, Jun 25 2016, 22:18:55) [MSC v.1900 64 bit (AMD64)] on win32<br>Type “help”, “copyright”, “credits” or “license” for more information.<br>用python语法查看安装好的django版本:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; import django</div><div class="line">&gt;&gt;&gt; django.get_version()</div></pre></td></tr></table></figure></p>
+<p>回显:<br>‘1.8.13’</p>
+<p>交互解释器示例</p>
+<p>Python 交互解释器是命令行窗口的程序，通过它可以交互式地编写 Python 程序。 要启动它只需运行 python 命令。</p>
+<p>我们在交互解释器中演示Python示例将贯穿整本书。 你可以用三个大于号 (&gt;&gt;&gt; )来分辨出示例，三个大于号就表示交互提示符。 如果你要从本书中拷贝示例，请不要拷贝提示符。<br>在交互式解释器中，多行声明用三个点 (…）来填补。 例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; print (&quot;&quot;&quot;This is a</div><div class="line">... string that spans</div><div class="line">... three lines.&quot;&quot;&quot;)</div><div class="line">This is a</div><div class="line">string that spans</div><div class="line">three lines.</div><div class="line">&gt;&gt;&gt; def my_function(value):</div><div class="line">...     print (value)</div><div class="line">...</div><div class="line"></div><div class="line">&gt;&gt;&gt; my_function(&apos;hello&apos;)</div><div class="line">hello</div><div class="line">这三个在新行开始插入的点，是Python Shell自行加入的，不属于我们的输入。 但是包含它们是为了追求解释器的正确输出。 如果你拷贝我们的示例去运行，千万别拷贝这些点。</div></pre></td></tr></table></figure></p>
+<p>Starting a Project(新建一个jango程序)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">django-admin startproject mysite</div></pre></td></tr></table></figure></p>
+<p>有过 PHP 编程背景的话，你可能习惯于将代码都放在 Web 服务器的文档根目录 (例如 /var/www 这样的地方).<br>而在 Django 中，把任何Python代码和web server的文档根(root)放在一起并不是一个好主意。因为这样做有使<br>人能通过网路看到你原代码的风险. 那就太糟了。<br>把代码放置在文档根目录 之外 的某些目录中。</p>
+<p>转到你创建的目录，运行命令django-admin.py startproject mysite。这样会在你的当前目录下创建一个目录。mysite</p>
+<p>startproject 命令创建一个目录，包含2个文件：manage.py和mysite文件夹<br>和<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">mysite/</div><div class="line">  manage.py</div><div class="line">  mysite/</div><div class="line">    __init__.py </div><div class="line">    settings.py </div><div class="line">    urls.py </div><div class="line">    wsgi.py</div></pre></td></tr></table></figure></p>
+<p> Django 1.8.1及以上的版本需要用以下命令：<br> cd mysite</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">py -3 python manage.py migrate</div></pre></td></tr></table></figure>
+<p>这种方法可以创建表，当你在models.py中新增了类时，运行它就可以自动在数据库中创建表了，不用手动创建。</p>
+<p>使用开发服务器<br>开发服务器，即开发时使用，一般修改代码后会自动重启，方便调试和开发，但是由于性能问题，建议只用来测试，不要用在生产环境<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">py -3 manage.py runserver 0.0.0.0:8000</div></pre></td></tr></table></figure></p>
+<p>回显:<br>Performing system checks…</p>
+<p>System check identified no issues (0 silenced).<br>November 27, 2016 - 00:50:04<br>Django version 1.8.13, using settings ‘mysite.settings’<br>Starting development server at <a href="http://0.0.0.0:8000/" target="_blank" rel="external">http://0.0.0.0:8000/</a><br>Quit the server with CTRL-BREAK.</p>
+<h1 id="如果是外网或者局域网电脑上可以用其它电脑查看开发服务器"><a href="#如果是外网或者局域网电脑上可以用其它电脑查看开发服务器" class="headerlink" title="如果是外网或者局域网电脑上可以用其它电脑查看开发服务器"></a>如果是外网或者局域网电脑上可以用其它电脑查看开发服务器</h1><h1 id="访问对应的-ip加端口，比如-http-192-168-10-15-8000"><a href="#访问对应的-ip加端口，比如-http-192-168-10-15-8000" class="headerlink" title="访问对应的 ip加端口，比如 http://192.168.10.15:8000"></a>访问对应的 ip加端口，比如 <a href="http://192.168.10.15:8000" target="_blank" rel="external">http://192.168.10.15:8000</a></h1><p>Now’s a good time to note: don’t use this server in anything resembling a production environment. It’s intended only for use while developing.<br>Now that the server’s running, visit <a href="http://192.168.10.15:8000/" target="_blank" rel="external">http://192.168.10.15:8000/</a> with your Web browser.<br>You’ll see a “Welcome to Django” page in pleasant, light-blue pastel (Figure 1-3). It worked!</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/python/">python</a><a href="/tags/py/">py</a><a href="/tags/django/">django</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="https://annfs.github.io/2016/11/26/python3day2/" data-title="python3day2 | Annfs&#39;s  Blog" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2016/11/24/python3day1/"  title="python3day1">
+ <strong>下一篇：</strong><br/> 
+ <span>python3day1
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#使用默认版本的-Python"><span class="toc-number">1.</span> <span class="toc-text">使用默认版本的 Python</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#使用-Python-27"><span class="toc-number">2.</span> <span class="toc-text">使用 Python 27</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#使用-Python-35"><span class="toc-number">3.</span> <span class="toc-text">使用 Python 35</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#使用-Python-35-安装virtualenv"><span class="toc-number">4.</span> <span class="toc-text">使用 Python 35 安装virtualenv</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#使用-Python-35进入python3控制台"><span class="toc-number">5.</span> <span class="toc-text">使用 Python 35进入python3控制台</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#如果是外网或者局域网电脑上可以用其它电脑查看开发服务器"><span class="toc-number">6.</span> <span class="toc-text">如果是外网或者局域网电脑上可以用其它电脑查看开发服务器</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#访问对应的-ip加端口，比如-http-192-168-10-15-8000"><span class="toc-number">7.</span> <span class="toc-text">访问对应的 ip加端口，比如 http://192.168.10.15:8000</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/日志/" title="日志">日志<sup>1</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/push/" title="push">push<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/git/" title="git">git<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/add/" title="add">add<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/commit/" title="commit">commit<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/pull/" title="pull">pull<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/remote/" title="remote">remote<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/origin/" title="origin">origin<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/github/" title="github">github<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/python/" title="python">python<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/py/" title="py">py<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/django/" title="django">django<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/开始/" title="开始">开始<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/我/" title="我">我<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/日记/" title="日记">日记<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://qiwsir.github.io " target="_blank" title="一个Python大神级程序员">CodeCraft</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://uaustin.github.io " target="_blank" title="一个Python程序员交流分享的新一代Blog">Uaustin</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://annfs.github.io" target="_blank" title="Annfs&#39;s Blog">Annfs&#39;s Blog</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">新浪微博</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<div class="social-font" class="clearfix">
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
+		
+		<a href="/about" target="_blank" title="Annfs">Annfs</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

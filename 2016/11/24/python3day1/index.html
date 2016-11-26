@@ -1,0 +1,510 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>python3day1 | Annfs&#39;s  Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Annfs">
+    
+
+    
+    <meta name="description" content="题目1：有1、2、3、4个数字，能组成多少个互不相同且无重复数字的三位数？都是多少？程序分析：可填在百位、十位、个位的数字都是1、2、3、4。组成所有的排列后再去 掉不满足条件的排列。参考程序源代码：123456789101112131415#!/usr/bin/env python#coding:utf-8#方法 1for i in range(1,5):    for j in range(1">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python3day1">
+<meta property="og:url" content="https://annfs.github.io/2016/11/24/python3day1/index.html">
+<meta property="og:site_name" content="Annfs's  Blog">
+<meta property="og:description" content="题目1：有1、2、3、4个数字，能组成多少个互不相同且无重复数字的三位数？都是多少？程序分析：可填在百位、十位、个位的数字都是1、2、3、4。组成所有的排列后再去 掉不满足条件的排列。参考程序源代码：123456789101112131415#!/usr/bin/env python#coding:utf-8#方法 1for i in range(1,5):    for j in range(1">
+<meta property="og:updated_time" content="2016-11-24T14:33:28.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="python3day1">
+<meta name="twitter:description" content="题目1：有1、2、3、4个数字，能组成多少个互不相同且无重复数字的三位数？都是多少？程序分析：可填在百位、十位、个位的数字都是1、2、3、4。组成所有的排列后再去 掉不满足条件的排列。参考程序源代码：123456789101112131415#!/usr/bin/env python#coding:utf-8#方法 1for i in range(1,5):    for j in range(1">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Annfs&#39;s  Blog" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="Annfs&#39;s  Blog" title="Annfs&#39;s  Blog"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Annfs&#39;s  Blog">Annfs&#39;s  Blog</a></h1>
+				<h2 class="blog-motto">Pycoder,Html</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">主页 | Home</a></li>
+					
+						<li><a href="/archives">归档 | Archives</a></li>
+					
+						<li><a href="/about">简介 | About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:annfs.github.io">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/11/24/python3day1/" title="python3day1" itemprop="url">python3day1</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Annfs" target="_blank" itemprop="author">Annfs</a>
+		
+  <p class="article-time">
+    <time datetime="2016-11-24T12:47:49.000Z" itemprop="datePublished"> 发表于 2016-11-24</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			
+		
+		</div>
+		
+		<p>题目1：有1、2、3、4个数字，能组成多少个互不相同且无重复数字的三位数？都是多少？<br>程序分析：可填在百位、十位、个位的数字都是1、2、3、4。组成所有的排列后再去 掉不满足条件的排列。<br>参考程序源代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">#!/usr/bin/env python</div><div class="line">#coding:utf-8</div><div class="line">#方法 1</div><div class="line">for i in range(1,5):</div><div class="line">    for j in range(1,5):</div><div class="line">        for k in range(1,5):</div><div class="line">            if (i!=j) and (j!=k) and (i!=k): #此处可以不用加小括号</div><div class="line">                print (i, j, k)</div><div class="line">#方法 2</div><div class="line">import itertools #learn in https://docs.python.org/3.5/library/itertools.html</div><div class="line">lst = [&apos;1&apos;,&apos;2&apos;,&apos;3&apos;,&apos;4&apos;]</div><div class="line">result = []</div><div class="line">for i in itertools.permutations(lst, 3):</div><div class="line">	result.append(int(&quot;&quot;.join(i)))</div><div class="line">print (result)</div></pre></td></tr></table></figure></p>
+<p>题目2：企业发放的奖金根据利润提成。利润(I)低于或等于10万元时，奖金可提10%；<br>利润高于10万元，低于20万元时，低于10万元的部分按10%提成，高于10万元的部分，<br>可可提成7.5%；20万到40万之间时，高于20万元的部分，可提成5%；40万到60万之间时<br>高于40万元的部分，可提成3%；60万到100万之间时，高于60万元的部分，可提成1.5%，<br>高于100万元时，超过100万元的部分按1%提成，从键盘输入当月利润I，求应发放奖金总数？<br>程序分析：请利用数轴来分界，定位。注意定义时需把奖金定义成长整型。</p>
+<p>参考程序源代码1:</p>
+<pre><code>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">#!/usr/bin/env python</div><div class="line">#coding:utf-8</div><div class="line">bonus1 = 100000 * 0.1</div><div class="line">bonus2 = bonus1 + 100000 * 0.075</div><div class="line">bonus3 = bonus2 + 200000 * 0.05</div><div class="line">bonus4 = bonus3 + 200000 * 0.03</div><div class="line">bonus5 = bonus4 + 400000 * 0.015</div><div class="line">i = int(input(&apos;Please input your gain:(q-exit)&apos;))</div><div class="line">if i &lt;= 100000:</div><div class="line">    bonus = i * 0.1</div><div class="line">elif i &lt;= 200000:</div><div class="line">    bonus = bonus1 + (i-100000) * 0.075</div><div class="line">elif i &lt;= 400000:</div><div class="line">    bonus = bonus2 + (i-200000) * 0.05</div><div class="line">elif i &lt;= 600000:</div><div class="line">    bonus = bonus3 + (i-400000) * 0.03</div><div class="line">elif i &lt;= 1000000:</div><div class="line">    bonus = bonus4 + (i-600000) * 0.015</div><div class="line">else:</div><div class="line">    bonus = bonus5 + (i-1000000) * 0.01</div><div class="line">print (&quot;Total Bonus=&quot;, bonus)</div><div class="line"></div><div class="line">    </div><div class="line">&quot;&quot;&quot;</div><div class="line">参考程序源代码2：</div><div class="line">&quot;&quot;&quot;</div><div class="line">i = int(input(&apos;净利润:&apos;))</div><div class="line">arr = [1000000,600000,400000,200000,100000,0]</div><div class="line">rat = [0.01,0.015,0.03,0.05,0.075,0.1]</div><div class="line">bonus = 0</div><div class="line">for idx in range(0,6):</div><div class="line">    if i&gt;arr[idx]:</div><div class="line">        bonus+=(i-arr[idx])*rat[idx]</div><div class="line">        #print(bonus)</div><div class="line">        #print ((i-arr[idx])*rat[idx])</div><div class="line">        i=arr[idx]#i循环得到下一个arr[idx]</div><div class="line">        #print(i)</div><div class="line">print (&quot;Total Bonus=&quot;, bonus)</div></pre></td></tr></table></figure>
+
+</code></pre>  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="https://annfs.github.io/2016/11/24/python3day1/" data-title="python3day1 | Annfs&#39;s  Blog" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2016/11/26/python3day2/" title="python3day2">
+  <strong>上一篇：</strong><br/>
+  <span>
+  python3day2</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2016/11/22/python/"  title="python">
+ <strong>下一篇：</strong><br/> 
+ <span>python
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ 
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/日志/" title="日志">日志<sup>1</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/push/" title="push">push<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/git/" title="git">git<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/add/" title="add">add<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/commit/" title="commit">commit<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/pull/" title="pull">pull<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/remote/" title="remote">remote<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/origin/" title="origin">origin<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/github/" title="github">github<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/python/" title="python">python<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/py/" title="py">py<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/django/" title="django">django<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/开始/" title="开始">开始<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/我/" title="我">我<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/日记/" title="日记">日记<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://qiwsir.github.io " target="_blank" title="一个Python大神级程序员">CodeCraft</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://uaustin.github.io " target="_blank" title="一个Python程序员交流分享的新一代Blog">Uaustin</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://annfs.github.io" target="_blank" title="Annfs&#39;s Blog">Annfs&#39;s Blog</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">新浪微博</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<div class="social-font" class="clearfix">
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
+		
+		<a href="/about" target="_blank" title="Annfs">Annfs</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>
